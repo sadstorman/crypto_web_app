@@ -6,17 +6,17 @@ import {
 
 export const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark text-center">
-
-            <Link
-                className="navbar-brand"
-                to="/"
-            >
-                Dashboard
-            </Link>
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark text-center ">
 
             <div className="navbar-collapse">
                 <div className="navbar-nav">
+
+                    <Link
+                        className="navbar-brand ml"
+                        to="/"
+                    >
+                        Dashboard
+                    </Link>
 
                     <NavLink
                         activeClassName="active"

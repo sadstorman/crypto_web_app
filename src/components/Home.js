@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react'
 import '../styles/cards.css'
 
 export const Home = () => {
+
     const [isClicked, setIsClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+
+    const [topTen, setTopTen] = useState([])
 
     const [pvu, setPvu] = useState('')
     const [changePvu, setChangePvu] = useState('')
@@ -20,6 +23,11 @@ export const Home = () => {
     const handleClick = () => {
         setIsClicked(!isClicked)
         setIsLoading(!isLoading)
+    }
+
+    const getTopTen = async () => {
+        const resp = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
+        setTopTen(resp.data)
     }
 
     const getData = async () => {
@@ -51,7 +59,7 @@ export const Home = () => {
 
     useEffect(() => {
         getData()
-
+        getTopTen()
     }, [isLoading, setPvu, setEternal, setSlp, setChangeSlp, setAxs, setChangeAxs])
 
     return (
@@ -70,7 +78,7 @@ export const Home = () => {
                         <div className="card-group text-center d-flex justify-content-between gap-4 ">
                             <div className="card rounded">
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center ">
-                                    <img className="rounded mx-auto  h-50" src='/pvu.png' alt="pvu" />
+                                    <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
                                     <h4 className="card-title bold">PVU</h4>
                                     <p className="card-text">{pvu} $</p>
                                 </div>
@@ -81,7 +89,7 @@ export const Home = () => {
 
                             <div className="card rounded">
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto  h-50" src="/eternal.png" alt="Eternal" />
+                                    <img className="rounded mx-auto  h-50 img-fluid" src="/eternal.png" alt="Eternal" />
                                     <h4 className="card-title bold">ETERNAL</h4>
                                     <p className="card-text">{eternal} $</p>
                                 </div>
@@ -98,7 +106,7 @@ export const Home = () => {
                         <div className="card-group  text-center d-flex justify-content-between gap-4">
                             <div className="card rounded mt-4" >
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto  h-50" src="/slp.png" alt="SLP" />
+                                    <img className="rounded mx-auto  h-50 img-fluid" src="/slp.png" alt="SLP" />
                                     <h4 className="card-title bold">SLP</h4>
                                     <p className="card-text">{slp} $</p>
                                 </div>
@@ -109,7 +117,7 @@ export const Home = () => {
 
                             <div className="card rounded mt-4 ">
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto h-50" src="/axs.png" alt="AXS" />
+                                    <img className="rounded mx-auto h-50 img-fluid" src="/axs.png" alt="AXS" />
                                     <h4 className="card-title bold">AXS</h4>
                                     <p className="card-text">{axs} $</p>
                                 </div>
@@ -119,6 +127,16 @@ export const Home = () => {
                             </div>
                         </div>
 
+                    </div>
+
+                    <div className="text-center mt-4">
+                        <h3> <u>TOP TEN CRYPTOS</u></h3>
+                        <ol className="d-flex flex-column justify-content-center align-items-center">
+                            {topTen.map(moneda => {
+                                return <p className="text-success" key={moneda.id}
+                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {moneda.current_price} $ </p>
+                            })}
+                        </ol>
                     </div>
 
                     <footer className="footer text-center margen"> <p className="text-success">Ayudame a salir de argentina: 0x0b4b8Df226D71620AC68FaC561E69aA13e02987f</p></footer>

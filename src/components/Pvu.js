@@ -16,7 +16,6 @@ export const Pvu = () => {
         setIsLoading(!isLoading)
     }
 
-
     const getData = async () => {
         const resp = await axios.get('https://api.coingecko.com/api/v3/coins/plant-vs-undead-token')
         const usdEt = resp.data.market_data.current_price.usd
@@ -28,7 +27,6 @@ export const Pvu = () => {
 
     useEffect(() => {
         getData()
-
     }, [setPvu, isLoading])
 
     return (
