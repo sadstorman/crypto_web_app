@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/cards.css'
 
 export const Home = () => {
+    let word = '-'
 
     const [isClicked, setIsClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -35,13 +36,13 @@ export const Home = () => {
         const usdPvu = resp.data.market_data.current_price.usd
         const changePvu = resp.data.market_data.price_change_percentage_24h
         setPvu(`${usdPvu}`)
-        setChangePvu(changePvu)
+        setChangePvu(`${changePvu}`)
 
         const resp2 = await axios.get('https://api.coingecko.com/api/v3/coins/cryptomines-eternal')
         const usdEt = resp2.data.market_data.current_price.usd
         const changeEt = resp2.data.market_data.price_change_percentage_24h
         setEternal(`${usdEt}`)
-        setChangeEternal(changeEt)
+        setChangeEternal(`${changeEt}`)
 
         const resp3 = await axios.get('https://api.coingecko.com/api/v3/coins/smooth-love-potion')
         const resp4 = await axios.get('https://api.coingecko.com/api/v3/coins/axie-infinity')
@@ -80,10 +81,12 @@ export const Home = () => {
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center ">
                                     <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
                                     <h4 className="card-title bold">PVU</h4>
-                                    <p className="card-text">{pvu} $</p>
+                                    <p className="card-text">{(pvu * 1).toFixed(2)} $</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{changePvu} %</small>
+                                    {
+                                        (changePvu.includes(word) ? (<small className="text-danger">{(changePvu * 1).toFixed(2)} %</small>) : (<small className="text-success">{(changePvu * 1).toFixed(2)} %</small>))
+                                    }
                                 </div>
                             </div>
 
@@ -91,10 +94,12 @@ export const Home = () => {
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
                                     <img className="rounded mx-auto  h-50 img-fluid" src="/eternal.png" alt="Eternal" />
                                     <h4 className="card-title bold">ETERNAL</h4>
-                                    <p className="card-text">{eternal} $</p>
+                                    <p className="card-text">{(eternal * 1).toFixed(2)} $</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{changeEternal} %</small>
+                                    {
+                                        (changeEternal.includes(word) ? (<small className="text-danger">{(changeEternal * 1).toFixed(2)} %</small>) : (<small className="text-success"> {(changeEternal * 1).toFixed(2)} %</small>))
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -108,10 +113,12 @@ export const Home = () => {
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
                                     <img className="rounded mx-auto  h-50 img-fluid" src="/slp.png" alt="SLP" />
                                     <h4 className="card-title bold">SLP</h4>
-                                    <p className="card-text">{slp} $</p>
+                                    <p className="card-text">{(slp * 1).toFixed(3)} $</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{changeSlp} %</small>
+                                    {
+                                        (changeSlp.includes(word) ? (<small className="text-danger"> {(changeSlp * 1).toFixed(2)} % </small>) : (<small className="text-success"> {(changeSlp * 1).toFixed(2)} %</small>))
+                                    }
                                 </div>
                             </div>
 
@@ -119,10 +126,12 @@ export const Home = () => {
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center">
                                     <img className="rounded mx-auto h-50 img-fluid" src="/axs.png" alt="AXS" />
                                     <h4 className="card-title bold">AXS</h4>
-                                    <p className="card-text">{axs} $</p>
+                                    <p className="card-text">{(axs * 1).toFixed(1)} $</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{changeAxs} %</small>
+                                    {
+                                        (changeAxs.includes(word) ? (<small className="text-danger">{(changeAxs * 1).toFixed(2)} % </small>) : (<small className="text-success">{(changeAxs * 1).toFixed(2)} % </small>))
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -134,7 +143,7 @@ export const Home = () => {
                         <ol className="d-flex flex-column justify-content-center align-items-center">
                             {topTen.map(moneda => {
                                 return <p className="text-success" key={moneda.id}
-                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {moneda.current_price} $ </p>
+                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ </p>
                             })}
                         </ol>
                     </div>
