@@ -143,7 +143,7 @@ export const Home = () => {
                         <ol className="d-flex flex-column justify-content-center align-items-center">
                             {topTen.map(moneda => {
                                 return <p className="text-success" key={moneda.id}
-                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ </p>
+                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ change <small className="text-light">{(moneda.price_change_percentage_24h * 1).toFixed(2)} % </small></p>
                             })}
                         </ol>
                     </div>
