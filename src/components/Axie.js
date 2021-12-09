@@ -5,12 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from '../hooks/useForm';
 export const Axie = () => {
 
+    let word = '-'
     // const [dateSelected, setDateSelected] = useState(new Date())
     const [isLoading, setIsLoading] = useState(true)
     const [isClicked, setIsClicked] = useState(false)
     const [slp, setSlp] = useState(null)
     const [axs, setAxs] = useState(null)
-    const [ChangeSlp, setChangeSlp] = useState(null)
+    const [changeSlp, setChangeSlp] = useState(null)
     const [changeAxs, setChangeAxs] = useState(null)
     const [formValues, handleInputChange] = useForm({ howMuchSlp: '' })
     const { howMuchSlp } = formValues
@@ -59,10 +60,10 @@ export const Axie = () => {
 
                 <div className="col-sm">
                     <h3> SLP actual value: {isLoading ? (<div className="spinner-border text-light" role="status">
-                    </div>) : <h4 className="text-danger text-center">{(slp + " $")} <h6> change percentage {ChangeSlp} %</h6> </h4>} </h3>
+                    </div>) : ((changeSlp.includes(word) ? (<h4 className="text-danger text-center">{(slp * 1).toFixed(3)} $<h6 className="mt-1"> change percentage {(changeSlp * 1).toFixed(2)} %</h6> </h4>) : (<h4 className="text-success text-center">{(slp * 1).toFixed(3)} $<h6 className="mt-1"> change percentage {(changeSlp * 1).toFixed(2)} %</h6> </h4>)))}</h3>
 
                     <h3> AXS actual value: {isLoading ? (<div className="spinner-border text-light" role="status">
-                    </div>) : <h4 className="text-danger text-center">{(axs + " $")} <h6> change percentage {changeAxs} %</h6> </h4>}</h3>
+                    </div>) : ((changeAxs.includes(word) ? (<h4 className="text-danger text-center">{(axs * 1).toFixed(1)} $<h6 className="mt-1"> change percentage {(changeAxs * 1).toFixed(2)} %</h6> </h4>) : (<h4 className="text-success text-center">{(axs * 1).toFixed(1)} $<h6 className="mt-1"> change percentage {(changeAxs * 1).toFixed(2)} %</h6> </h4>)))}</h3>
 
 
                 </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from '../hooks/useForm'
 
 export const Cryptomines = () => {
+    let word = '-'
 
     const [eternal, setEternal] = useState('')
     const [changeEternal, setChangeEternal] = useState('')
@@ -22,7 +23,7 @@ export const Cryptomines = () => {
         const usdEt = resp.data.market_data.current_price.usd
         const changeEt = resp.data.market_data.price_change_percentage_24h
         setEternal(`${usdEt}`)
-        setChangeEternal(changeEt)
+        setChangeEternal(`${changeEt}`)
         setIsLoading(false)
     }
 
@@ -40,7 +41,7 @@ export const Cryptomines = () => {
 
                 <div className="col-sm">
                     <h3> Eternal actual value: {isLoading ? (<div className="spinner-border text-light" role="status">
-                    </div>) : <h4 className="text-danger text-center">{(eternal + " $")} <h6> change percentage {changeEternal} %</h6> </h4>} </h3>
+                    </div>) : ((changeEternal.includes(word)? (<h4 className="text-danger text-center">{eternal} $<h6 className="mt-1"> change percentage {(changeEternal * 1).toFixed(2)} %</h6> </h4>) : (<h4 className="text-success text-center">{eternal} $<h6 className="mt-1"> change percentage {(changeEternal * 1).toFixed(2)} %</h6> </h4>)))}</h3>
 
                 </div>
 

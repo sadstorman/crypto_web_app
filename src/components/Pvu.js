@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from '../hooks/useForm'
 
 export const Pvu = () => {
-
+    let word = '-'
     const [pvu, setPvu] = useState('')
     const [changePvu, setChangePvu] = useState('')
     const [isLoading, setIsLoading] = useState(true)
@@ -21,7 +21,7 @@ export const Pvu = () => {
         const usdEt = resp.data.market_data.current_price.usd
         const changeEt = resp.data.market_data.price_change_percentage_24h
         setPvu(`${usdEt}`)
-        setChangePvu(changeEt)
+        setChangePvu(`${changeEt}`)
         setIsLoading(false)
     }
 
@@ -38,7 +38,8 @@ export const Pvu = () => {
 
                 <div className="col-sm">
                     <h3> PVU actual value: {isLoading ? (<div className="spinner-border text-light" role="status">
-                    </div>) : <h4 className="text-danger text-center">{(pvu + " $")} <h6> change percentage {changePvu} %</h6> </h4>} </h3>
+                    </div>) : ((changePvu.includes(word) ? (<h4 className="text-danger text-center">{(pvu * 1).toFixed(3)} $<h6 className="mt-1"> change percentage {(changePvu * 1).toFixed(2)} %</h6> </h4>) : (<h4 className="text-success text-center">{(pvu * 1).toFixed(3)} $<h6 className="mt-1"> change percentage {(changePvu * 1).toFixed(2)} %</h6> </h4>)))}</h3>
+
 
                 </div>
 

@@ -64,7 +64,7 @@ export const Home = () => {
     }, [isLoading, setPvu, setEternal, setSlp, setChangeSlp, setAxs, setChangeAxs])
 
     return (
-        <div >
+        <div className="container-fluid">
             <h1 className="text-center">Home</h1>
             <div className="text-center">
                 <button className="btn btn-lg btn-primary mb-2 w-100 botoncito" onClick={handleClick} > refresh values</button>
@@ -74,9 +74,9 @@ export const Home = () => {
                 isLoading ? ((<div className="d-flex justify-content-center margin"> <div className="spinner-border text-center text-light" style={{ width: "12rem", height: "12rem" }} role="status">
                 </div></div>)) : (<div className="container margen">
 
-                    <div className="row d-flex ">
+                    <div className="row">
 
-                        <div className="card-group text-center d-flex justify-content-between gap-4 ">
+                        <div className="card-group text-center d-flex justify-content-between gap-4">
                             <div className="card rounded">
                                 <div className="card-body d-flex flex-column justify-content-center align-items-center ">
                                     <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
@@ -106,7 +106,7 @@ export const Home = () => {
 
                     </div>
 
-                    <div className="row ">
+                    <div className="row  animate__animated animate__backInLeft">
 
                         <div className="card-group  text-center d-flex justify-content-between gap-4">
                             <div className="card rounded mt-4" >
@@ -143,7 +143,7 @@ export const Home = () => {
                         <ol className="d-flex flex-column justify-content-center align-items-center">
                             {topTen.map(moneda => {
                                 return <p className="text-success" key={moneda.id}
-                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ change <small className="text-light">{(moneda.price_change_percentage_24h * 1).toFixed(2)} % </small></p>
+                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ <small className="text-light"> change {(moneda.price_change_percentage_24h * 1).toFixed(2)} % </small></p>
                             })}
                         </ol>
                     </div>

@@ -6,7 +6,7 @@ import {
 
 export const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark text-center ">
+        <nav className="container-fluid navbar navbar-expand-sm navbar-dark bg-dark text-center ">
 
             <div className="navbar-collapse">
                 <div className="navbar-nav">
