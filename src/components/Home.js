@@ -81,7 +81,7 @@ export const Home = () => {
                             <div className="card-group">
                                 <div className="card rounded m-2">
                                     <div className="card-body">
-                                        <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
+                                        <img className="rounded mx-auto  h-50 img-fluid" src='./assets/pvu.png' alt="pvu" />
                                         <h4 className="card-title bold">PVU</h4>
                                         <p className="card-text">{(pvu * 1).toFixed(2)} $</p>
                                     </div>
@@ -94,7 +94,7 @@ export const Home = () => {
 
                                 <div className="card rounded m-2">
                                     <div className="card-body">
-                                        <img className="rounded mx-auto  h-50 img-fluid" src="/eternal.png" alt="Eternal" />
+                                        <img className="rounded mx-auto  h-50 img-fluid" src="./assets/eternal.png" alt="Eternal" />
                                         <h4 className="card-title bold">ETERNAL</h4>
                                         <p className="card-text">{(eternal * 1).toFixed(2)} $</p>
                                     </div>
@@ -115,7 +115,7 @@ export const Home = () => {
                             <div className="card-group">
                                 <div className="card rounded m-2" >
                                     <div className="card-body">
-                                        <img className="rounded mx-auto  h-50 img-fluid" src="/slp.png" alt="SLP" />
+                                        <img className="rounded mx-auto  h-50 img-fluid" src="./assets/slp.png" alt="SLP" />
                                         <h4 className="card-title bold">SLP</h4>
                                         <p className="card-text">{(slp * 1).toFixed(3)} $</p>
                                     </div>
@@ -128,7 +128,7 @@ export const Home = () => {
 
                                 <div className="card rounded m-2">
                                     <div className="card-body">
-                                        <img className="rounded mx-auto h-50 img-fluid" src="/axs.png" alt="AXS" />
+                                        <img className="rounded mx-auto h-50 img-fluid" src="./assets/axs.png" alt="AXS" />
                                         <h4 className="card-title bold">AXS</h4>
                                         <p className="card-text">{(axs * 1).toFixed(1)} $</p>
                                     </div>
