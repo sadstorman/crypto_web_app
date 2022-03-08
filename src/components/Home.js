@@ -74,76 +74,85 @@ export const Home = () => {
                 isLoading ? ((<div className="d-flex justify-content-center margin"> <div className="spinner-border text-center text-light" style={{ width: "12rem", height: "12rem" }} role="status">
                 </div></div>)) : (<div className="container margen">
 
-                    <div className="row">
+                    <div className="row-col-2 ">
 
-                        <div className="card-group text-center d-flex justify-content-between gap-4">
-                            <div className="card rounded">
-                                <div className="card-body d-flex flex-column justify-content-center align-items-center ">
-                                    <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
-                                    <h4 className="card-title bold">PVU</h4>
-                                    <p className="card-text">{(pvu * 1).toFixed(2)} $</p>
+                        <div className='col-12 col-sm-12 text-center'>
+
+                            <div className="card-group">
+                                <div className="card rounded m-2">
+                                    <div className="card-body">
+                                        <img className="rounded mx-auto  h-50 img-fluid" src='/pvu.png' alt="pvu" />
+                                        <h4 className="card-title bold">PVU</h4>
+                                        <p className="card-text">{(pvu * 1).toFixed(2)} $</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        {
+                                            (changePvu.includes(word) ? (<small className="text-danger">{(changePvu * 1).toFixed(2)} %</small>) : (<small className="text-success">{(changePvu * 1).toFixed(2)} %</small>))
+                                        }
+                                    </div>
                                 </div>
-                                <div className="card-footer">
-                                    {
-                                        (changePvu.includes(word) ? (<small className="text-danger">{(changePvu * 1).toFixed(2)} %</small>) : (<small className="text-success">{(changePvu * 1).toFixed(2)} %</small>))
-                                    }
+
+                                <div className="card rounded m-2">
+                                    <div className="card-body">
+                                        <img className="rounded mx-auto  h-50 img-fluid" src="/eternal.png" alt="Eternal" />
+                                        <h4 className="card-title bold">ETERNAL</h4>
+                                        <p className="card-text">{(eternal * 1).toFixed(2)} $</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        {
+                                            (changeEternal.includes(word) ? (<small className="text-danger">{(changeEternal * 1).toFixed(2)} %</small>) : (<small className="text-success"> {(changeEternal * 1).toFixed(2)} %</small>))
+                                        }
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="card rounded">
-                                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto  h-50 img-fluid" src="/eternal.png" alt="Eternal" />
-                                    <h4 className="card-title bold">ETERNAL</h4>
-                                    <p className="card-text">{(eternal * 1).toFixed(2)} $</p>
-                                </div>
-                                <div className="card-footer">
-                                    {
-                                        (changeEternal.includes(word) ? (<small className="text-danger">{(changeEternal * 1).toFixed(2)} %</small>) : (<small className="text-success"> {(changeEternal * 1).toFixed(2)} %</small>))
-                                    }
-                                </div>
-                            </div>
+
                         </div>
+
+
+                        <div className='col-12  col-sm-12 text-center'>
+
+                            <div className="card-group">
+                                <div className="card rounded m-2" >
+                                    <div className="card-body">
+                                        <img className="rounded mx-auto  h-50 img-fluid" src="/slp.png" alt="SLP" />
+                                        <h4 className="card-title bold">SLP</h4>
+                                        <p className="card-text">{(slp * 1).toFixed(3)} $</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        {
+                                            (changeSlp.includes(word) ? (<small className="text-danger"> {(changeSlp * 1).toFixed(2)} % </small>) : (<small className="text-success"> {(changeSlp * 1).toFixed(2)} %</small>))
+                                        }
+                                    </div>
+                                </div>
+
+                                <div className="card rounded m-2">
+                                    <div className="card-body">
+                                        <img className="rounded mx-auto h-50 img-fluid" src="/axs.png" alt="AXS" />
+                                        <h4 className="card-title bold">AXS</h4>
+                                        <p className="card-text">{(axs * 1).toFixed(1)} $</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        {
+                                            (changeAxs.includes(word) ? (<small className="text-danger">{(changeAxs * 1).toFixed(2)} % </small>) : (<small className="text-success">{(changeAxs * 1).toFixed(2)} % </small>))
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
 
                     </div>
 
-                    <div className="row  animate__animated animate__backInLeft">
 
-                        <div className="card-group  text-center d-flex justify-content-between gap-4">
-                            <div className="card rounded mt-4" >
-                                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto  h-50 img-fluid" src="/slp.png" alt="SLP" />
-                                    <h4 className="card-title bold">SLP</h4>
-                                    <p className="card-text">{(slp * 1).toFixed(3)} $</p>
-                                </div>
-                                <div className="card-footer">
-                                    {
-                                        (changeSlp.includes(word) ? (<small className="text-danger"> {(changeSlp * 1).toFixed(2)} % </small>) : (<small className="text-success"> {(changeSlp * 1).toFixed(2)} %</small>))
-                                    }
-                                </div>
-                            </div>
 
-                            <div className="card rounded mt-4 ">
-                                <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                                    <img className="rounded mx-auto h-50 img-fluid" src="/axs.png" alt="AXS" />
-                                    <h4 className="card-title bold">AXS</h4>
-                                    <p className="card-text">{(axs * 1).toFixed(1)} $</p>
-                                </div>
-                                <div className="card-footer">
-                                    {
-                                        (changeAxs.includes(word) ? (<small className="text-danger">{(changeAxs * 1).toFixed(2)} % </small>) : (<small className="text-success">{(changeAxs * 1).toFixed(2)} % </small>))
-                                    }
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className="text-center mt-4">
+                    <div className="col-12 col-sm-12 text-center mt-4">
                         <h3> <u>TOP TEN CRYPTOS</u></h3>
-                        <ol className="d-flex flex-column justify-content-center align-items-center">
+                        <ol className="text-center">
                             {topTen.map(moneda => {
                                 return <p className="text-success" key={moneda.id}
-                                ><img className="img" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ <small className="text-light"> change {(moneda.price_change_percentage_24h * 1).toFixed(2)} % </small></p>
+                                ><img className="img img-fluid" src={moneda.image} alt="cryptoIMG" /> {(moneda.name).toUpperCase()} -> {(moneda.current_price * 1).toFixed(1)} $ <small className="text-light"> change {(moneda.price_change_percentage_24h * 1).toFixed(2)} % </small></p>
                             })}
                         </ol>
                     </div>
@@ -152,7 +161,6 @@ export const Home = () => {
 
                 </div>)
             }
-
         </div>
     )
 }
