@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar } from '../components/ui/Navbar'
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
     Redirect
